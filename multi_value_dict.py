@@ -30,6 +30,13 @@ class MultiValueDictionary:
         else:
             return False
 
+    # function to check if a value exist for a given key
+    def valuexist(self,key,value):
+        if (key in self.dictionary and value in self.dictionary[key]):
+            return True
+        else:
+            return False
+
     # function to return list of keys
     def keys(self):
         return list(self.dictionary.keys())
