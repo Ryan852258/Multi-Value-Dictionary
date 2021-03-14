@@ -18,10 +18,13 @@ class MultiValueDictionary:
         if (key in self.dictionary):
             try:
                 self.dictionary[key].remove(value)
+                # if the key no longer has any members remove the key from the dict
+                if(len(self.dictionary[key]) == 0):
+                    self.dictionary.pop(key)
             except(ValueError):
-                raise ValueError("Value doesn't exist")
+                raise ValueError("Value does not exist")
         else:
-            raise KeyError("Key doesn't exist")
+            raise KeyError("Key does not exist")
 
     # function to check if a key exist in the dictionary
     def keyexist(self,key):
@@ -43,11 +46,17 @@ class MultiValueDictionary:
 
     # function to return the set of values associated with the key
     def members(self,key):
-        return self.dictionary[key]
+        if(key not in self.dictionary):
+            raise KeyError("Key does not exist")
+        else:
+            return self.dictionary[key]
 
     # function to return all the member values in the the dictionary
     def allmembers(self):
-        return list(self.dictionary.values())
+        members = list(self.dictionary.values())
+        # turn the 2d list of values into 1d list
+        flattened_members = sum(members,[])
+        return flattened_members
 
     # function to return all the key value pairs
     # Output: list containing key-value pairs in "key: value" format
@@ -63,7 +72,7 @@ class MultiValueDictionary:
         if(key in self.dictionary):
             self.dictionary.pop(key)
         else:
-            raise KeyError("key doesn't exist")
+            raise KeyError("key does not exist")
 
     # function to clear the dictionary
     def clear(self):
