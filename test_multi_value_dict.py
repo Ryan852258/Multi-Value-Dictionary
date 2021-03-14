@@ -45,6 +45,21 @@ class TestMultiValueDictionary(unittest.TestCase):
     def test_keyexist_nonexistant(self):
         mvd = MultiValueDictionary()
         self.assertEqual(mvd.keyexist("foo"),False)
+
+    def test_valueexist_exists(self):
+        mvd = MultiValueDictionary()
+        mvd.add("foo", "bar")
+        self.assertEqual(mvd.valuexist("foo","bar"), True)
+    
+    def test_valueexist_nonexistant_key(self):
+        mvd = MultiValueDictionary()
+        mvd.add("boo", "bar")
+        self.assertEqual(mvd.valuexist("foo","bar"),False)
+
+    def test_valueexist_nonexistant_value(self):
+        mvd = MultiValueDictionary()
+        mvd.add("foo", "baz")
+        self.assertEqual(mvd.valuexist("foo","bar"),False)
     
     def test_keys(self):
         mvd = MultiValueDictionary()
