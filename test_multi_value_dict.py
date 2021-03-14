@@ -5,13 +5,13 @@ class TestMultiValueDictionary(unittest.TestCase):
     def test_add(self):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
-        self.assertEqual(mvd.items(), ["foo: bar"])
+        self.assertEqual(mvd.allitems(), ["foo: bar"])
 
     def test_add_existing_key(self):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
         mvd.add("foo","baz")
-        self.assertEqual(mvd.items(), ["foo: bar","foo: baz"])
+        self.assertEqual(mvd.allitems(), ["foo: bar","foo: baz"])
 
     def test_add_existing_value(self):
         mvd = MultiValueDictionary()
@@ -23,7 +23,7 @@ class TestMultiValueDictionary(unittest.TestCase):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
         mvd.remove("foo","bar")
-        self.assertEqual(mvd.items(), [])
+        self.assertEqual(mvd.allitems(), [])
 
     def test_remove_nonexistant_value(self):
         mvd = MultiValueDictionary()
