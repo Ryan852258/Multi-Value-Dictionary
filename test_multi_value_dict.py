@@ -66,7 +66,7 @@ class TestMultiValueDictionary(unittest.TestCase):
         mvd.add("fizz","bar")
         mvd.add("boo","mar")
         mvd.add("bar","bar")        
-        self.assertEqual(mvd.members("fizz"), ["bazz","bar"])
+        self.assertEqual(mvd.members("fizz"), ["buzz","bar"])
         self.assertEqual(mvd.members("bar"), ["bar"])
         self.assertEqual(mvd.members("foo"), ["bar"])
         self.assertEqual(mvd.members("boo"), ["mar"])
