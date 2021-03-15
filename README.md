@@ -211,6 +211,7 @@ Example:
 4) bang: baz
 ```  
   
-
+### QUIT
+Exits out of the application
 
   
