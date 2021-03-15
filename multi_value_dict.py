@@ -11,7 +11,7 @@ class MultiValueDictionary:
         elif (value not in self.dictionary[key]):
             self.dictionary[key].append(value)
         else:
-            raise ValueError("Value already exists")
+            raise ValueError("value already exists")
 
     # function to remove a key value pair to dictionary
     def remove(self,key,value):
@@ -22,19 +22,19 @@ class MultiValueDictionary:
                 if(len(self.dictionary[key]) == 0):
                     self.dictionary.pop(key)
             except(ValueError):
-                raise ValueError("Value does not exist")
+                raise ValueError("value does not exist")
         else:
-            raise KeyError("Key does not exist")
+            raise KeyError("key does not exist")
 
     # function to check if a key exist in the dictionary
-    def keyexist(self,key):
+    def keyexists(self,key):
         if (key in self.dictionary):
             return True
         else:
             return False
 
     # function to check if a value exist for a given key
-    def valuexist(self,key,value):
+    def valueexists(self,key,value):
         if (key in self.dictionary and value in self.dictionary[key]):
             return True
         else:
@@ -47,7 +47,7 @@ class MultiValueDictionary:
     # function to return the set of values associated with the key
     def members(self,key):
         if(key not in self.dictionary):
-            raise KeyError("Key does not exist")
+            raise KeyError("key does not exist")
         else:
             return self.dictionary[key]
 
