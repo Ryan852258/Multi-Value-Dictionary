@@ -15,6 +15,16 @@ python mvd_app.py
 python3 mvd_app.py
 ```
 
+To run unit tests use the following commands:
+### Windows
+```
+python test_multi_value_dict.py
+```
+### Linux
+```
+python3 test_multi_value_dict.py
+```
+
 ## Commands 
 ### KEYS
 Returns all the keys in the dictionary.  Order is not guaranteed.
