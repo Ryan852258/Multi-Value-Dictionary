@@ -1,6 +1,5 @@
 class MultiValueDictionary:
-
-    #constructor to initalize empty dictionary
+    # constructor to initialize empty dictionary
     def __init__(self):
         self.dictionary = dict()
 
@@ -27,14 +26,14 @@ class MultiValueDictionary:
             raise KeyError("key does not exist")
 
     # function to check if a key exist in the dictionary
-    def keyexists(self,key):
+    def key_exists(self,key):
         if (key in self.dictionary):
             return True
         else:
             return False
 
     # function to check if a value exist for a given key
-    def valueexists(self,key,value):
+    def value_exists(self,key,value):
         if (key in self.dictionary and value in self.dictionary[key]):
             return True
         else:
@@ -44,32 +43,31 @@ class MultiValueDictionary:
     def keys(self):
         return list(self.dictionary.keys())
 
-    # function to return the set of values associated with the key
+    # function to return the set of member values associated with the key
     def members(self,key):
-        if(key not in self.dictionary):
+        if (key not in self.dictionary):
             raise KeyError("key does not exist")
         else:
             return self.dictionary[key]
 
-    # function to return all the member values in the the dictionary
-    def allmembers(self):
+    # function to return the set of all the member values in the the dictionary
+    def all_members(self):
         members = list(self.dictionary.values())
-        # turn the 2d list of values into 1d list
+        # turn the 2d list of values into a single list
         flattened_members = sum(members,[])
         return flattened_members
 
-    # function to return all the key value pairs
-    # Output: list containing key-value pairs in "key: value" format
-    def allitems(self):
+    # function to get all the key-value pairs in "key: value" format
+    def all_items(self):
         items = []
         for key in self.dictionary.keys():
             for member in self.dictionary[key]:
-                items.append("{key}: {value}".format(key=key,value=member))
+                items.append("{0}: {1}".format(key,member))
         return items
 
-    # function to remove a key and all of it's members 
-    def removeall(self,key):
-        if(key in self.dictionary):
+    # function to remove a key and all of it's values 
+    def remove_all(self,key):
+        if (key in self.dictionary):
             self.dictionary.pop(key)
         else:
             raise KeyError("key does not exist")

@@ -1,91 +1,84 @@
 from multi_value_dict import MultiValueDictionary
 
 # Dictionary holding amount of arguments for each command
-COMMANDARGUMENTS = {"ADD": 2, "REMOVE": 2, "REMOVEALL": 1, "CLEAR": 0, "KEYEXISTS": 1, "VALUEEXISTS": 2, "KEYS": 0, "MEMBERS": 1, "ALLMEMBERS": 0, "ITEMS": 0, "QUIT": 0}
-appDict = MultiValueDictionary()
+COMMAND_ARGUMENTS = {"ADD": 2, "REMOVE": 2, "REMOVEALL": 1, "CLEAR": 0, "KEYEXISTS": 1, "VALUEEXISTS": 2, "KEYS": 0, "MEMBERS": 1, "ALLMEMBERS": 0, "ITEMS": 0, "QUIT": 0}
+app_dict = MultiValueDictionary()
 
+# Helper function to print lists
+def print_list(input_list):
+    if (len(input_list) == 0):
+        print("(empty set)")
+    else:   
+        for i,item in enumerate(input_list):
+            print("{0}) {1}".format(i+1,item))
+
+# Main application loop
 def main():
     print("Welcome to my multivalue dictionary app!")
-    while(True):
+    while (True):
         try:
             # Get user input and extract the command and arguments 
-            userInput = input("> ").split()
+            user_input = input("> ").split()
 
-            # check  if userInput was empty
-            if(len(userInput) <= 0):
+            # Check if the user inputted anything 
+            if (len(user_input) == 0):
                 print(") Invalid command")
                 continue
 
-            command = userInput.pop(0).upper()
+            command = user_input.pop(0).upper()
 
-            # Check if user inputed a valid command
-            if(command not in COMMANDARGUMENTS):
+            # Check if user inputted a valid command
+            if (command not in COMMAND_ARGUMENTS):
                 print(") Invalid command")
                 continue
 
             # Check if you have the corrent number of arguments for the command
-            if(len(userInput) != COMMANDARGUMENTS[command]):
+            if (len(user_input) != COMMAND_ARGUMENTS[command]):
                 print(") Invalid number of arguments")
                 continue
 
-            # Check command and exicute requested command
-            if(command == "ADD"):
-                appDict.add(userInput[0], userInput[1])
+            # Check command and execute requested command
+            if (command == "ADD"):
+                app_dict.add(user_input[0], user_input[1])
                 print(") Added")
 
-            elif(command == "REMOVE"):
-                appDict.remove(userInput[0], userInput[1])
+            elif (command == "REMOVE"):
+                app_dict.remove(user_input[0], user_input[1])
                 print(") Removed")
 
-            elif(command == "REMOVEALL"):
-                appDict.removeall(userInput[0])
+            elif (command == "REMOVEALL"):
+                app_dict.remove_all(user_input[0])
                 print(") Removed")
 
-            elif(command == "CLEAR"):
-                appDict.clear()
+            elif (command == "CLEAR"):
+                app_dict.clear()
                 print(") Cleared")
 
-            elif(command == "KEYEXISTS"):
-                result = appDict.keyexists(userInput[0])
+            elif (command == "KEYEXISTS"):
+                result = app_dict.key_exists(user_input[0])
                 print(") {}".format(str(result).lower()))
 
-            elif(command == "VALUEEXISTS"):
-                result = appDict.valueexists(userInput[0],userInput[1])
+            elif (command == "VALUEEXISTS"):
+                result = app_dict.value_exists(user_input[0],user_input[1])
                 print(") {0}".format(str(result).lower()))
 
-            elif(command == "KEYS"):
-                keys = appDict.keys()
-                if(len(keys) == 0):
-                    print("(empty set)")
-                else:   
-                    for i,keys in enumerate(keys):
-                        print("{0}) {1}".format(i+1,keys))
+            elif (command == "KEYS"):
+                keys = app_dict.keys()
+                print_list(keys)
 
-            elif(command == "MEMBERS"):
-                members = appDict.members(userInput[0])
-                if(len(members) == 0):
-                    print("(empty set)")
-                else:   
-                    for i,member in enumerate(members):
-                        print("{0}) {1}".format(i+1,member))
+            elif (command == "MEMBERS"):
+                members = app_dict.members(user_input[0])
+                print_list(members)
 
-            elif(command == "ALLMEMBERS"):
-                members = appDict.allmembers()
-                if(len(members) == 0):
-                    print("(empty set)")
-                else:   
-                    for i,member in enumerate(members):
-                        print("{0}) {1}".format(i+1,member))
+            elif (command == "ALLMEMBERS"):
+                members = app_dict.all_members()
+                print_list(members)
     
-            elif(command == "ITEMS"):
-                items = appDict.allitems()
-                if(len(items) == 0):
-                    print("(empty set)")
-                else:
-                    for i,item in enumerate(items):
-                        print("{0}) {1}".format(i+1,item))
+            elif (command == "ITEMS"):
+                items = app_dict.all_items()
+                print_list(items)
 
-            elif(command == "QUIT"):
+            elif (command == "QUIT"):
                 break
 
         except ValueError as e:
@@ -95,7 +88,7 @@ def main():
             print(") ERROR, {}".format(str(e).strip("'")))
 
         except Exception:
-            print(") ERROR, an unexpected error has occured")
+            print(") ERROR, an unexpected error has occurred")
 
 # load main when ran as a script
 if __name__ == "__main__":
