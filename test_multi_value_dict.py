@@ -18,48 +18,54 @@ class TestMultiValueDictionary(unittest.TestCase):
         mvd.add("foo","bar")
         with self.assertRaises(ValueError): 
             mvd.add("foo","bar")
+        self.assertEqual(mvd.allitems(),["foo: bar"])
        
     def test_remove(self):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
         mvd.remove("foo","bar")
         self.assertEqual(mvd.allitems(), [])
+        self.assertEqual(mvd.keys(),[])
+        self.assertEqual(mvd.allmembers(),[])
 
     def test_remove_nonexistant_value(self):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
         with self.assertRaises(ValueError):        
             mvd.remove("foo","baz")
+        self.assertEqual(mvd.allitems(),["foo: bar"])
+
 
     def test_remove_nonexistant_key(self):
         mvd = MultiValueDictionary()
         mvd.add("foo","bar")
         with self.assertRaises(KeyError):
             mvd.remove("bar","foo")
+        self.assertEqual(mvd.allitems(),["foo: bar"])
 
     def test_keyexist_exists(self):
         mvd = MultiValueDictionary()
         mvd.add("foo", "bar")
-        self.assertEqual(mvd.keyexist("foo"), True)
+        self.assertEqual(mvd.keyexists("foo"), True)
     
     def test_keyexist_nonexistant(self):
         mvd = MultiValueDictionary()
-        self.assertEqual(mvd.keyexist("foo"),False)
+        self.assertEqual(mvd.keyexists("foo"),False)
 
     def test_valueexist_exists(self):
         mvd = MultiValueDictionary()
         mvd.add("foo", "bar")
-        self.assertEqual(mvd.valuexist("foo","bar"), True)
+        self.assertEqual(mvd.valueexists("foo","bar"), True)
     
     def test_valueexist_nonexistant_key(self):
         mvd = MultiValueDictionary()
         mvd.add("boo", "bar")
-        self.assertEqual(mvd.valuexist("foo","bar"),False)
+        self.assertEqual(mvd.valueexists("foo","bar"),False)
 
     def test_valueexist_nonexistant_value(self):
         mvd = MultiValueDictionary()
         mvd.add("foo", "baz")
-        self.assertEqual(mvd.valuexist("foo","bar"),False)
+        self.assertEqual(mvd.valueexists("foo","bar"),False)
     
     def test_keys(self):
         mvd = MultiValueDictionary()
@@ -125,7 +131,7 @@ class TestMultiValueDictionary(unittest.TestCase):
         mvd.add("boo","mar")
         mvd.add("bar","bar")
         mvd.removeall("fizz")
-        self.assertFalse(mvd.keyexist("fizz"))        
+        self.assertFalse(mvd.keyexists("fizz"))        
         self.assertEqual(mvd.allitems(), ["foo: bar","boo: mar","bar: bar"])
     
     def test_removeall_nonexistant(self):
