@@ -42,7 +42,7 @@ Example:
 2) baz
 
 > MEMBERS bad
-) ERROR, key does not exist.
+) ERROR, key does not exist
 ```
 
 ### ADD
@@ -79,10 +79,8 @@ Example:
 ) Removed
 
 > KEYS
-) empty set
+(empty set)
 
-> REMOVE boom
-) ERROR, key does not exist
 ```
   
 ### REMOVEALL
@@ -212,6 +210,6 @@ Example:
 ```  
   
 ### QUIT
-Exits out of the application
+Exits the application
 
   
