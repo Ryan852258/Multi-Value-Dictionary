@@ -1,6 +1,19 @@
 # Multi-Value-Dictionary
 The Multi-Value Dictionary app is a command line application that stores a multivalue dictionary in memory.  All keys and values are strings. 
 
+## Usage
+To run the application double click on mvd_app.py in Windows or use the following commands
+### Windows
+```
+python mvd_app.py
+
+```
+### Linux
+```
+python3 mvd_app.py
+```
+
+## Commands 
 ### KEYS
 Returns all the keys in the dictionary.  Order is not guaranteed.
   
