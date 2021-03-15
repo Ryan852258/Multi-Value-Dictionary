@@ -220,6 +220,6 @@ Example:
 ```  
   
 ### QUIT
-Exits the application
+Exits the application.
 
   
