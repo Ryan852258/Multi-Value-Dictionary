@@ -102,7 +102,7 @@ Example:
 ) Removed
 > KEYS
 (empty set)
-REMOVEALL foo
+> REMOVEALL foo
 ) ERROR, key does not exist
 ```
 
@@ -118,16 +118,12 @@ Example:
 > KEYS
 1) foo
 2) bang
-
 > CLEAR
 ) Cleared
-
 > KEYS
 (empty set)
-
 > CLEAR
 ) Cleared
-
 > KEYS
 (empty set)
 
@@ -178,6 +174,7 @@ Example:
 > ADD bang bar
 ) Added
 > ADD bang baz
+) Added
 > ALLMEMBERS
 1) bar
 2) baz
@@ -202,6 +199,7 @@ Example:
 > ADD bang bar
 ) Added
 > ADD bang baz
+) Added
 > ITEMS
 1) foo: bar
 2) foo: baz
