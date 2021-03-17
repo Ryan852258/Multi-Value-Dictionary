@@ -50,7 +50,6 @@ Example:
 > MEMBERS foo
 1) bar
 2) baz
-
 > MEMBERS bad
 ) ERROR, key does not exist
 ```
@@ -76,21 +75,16 @@ Example:
 ) Added
 > ADD foo baz
 ) Added
-
 > REMOVE foo bar  
 ) Removed
 > REMOVE foo bar  
 ) ERROR, value does not exist
-
 > KEYS
 1) foo
-
 > REMOVE foo baz
 ) Removed
-
 > KEYS
 (empty set)
-
 ```
   
 ### REMOVEALL
@@ -104,16 +98,12 @@ Example:
 ) Added
 > KEYS
 1) foo
-
 > REMOVEALL foo
 ) Removed
-
 > KEYS
 (empty set)
-
 REMOVEALL foo
 ) ERROR, key does not exist
-
 ```
 
 ### CLEAR
